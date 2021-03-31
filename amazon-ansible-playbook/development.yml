@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - role: security_group
+    - role: ec2
+  vars:
+    ami_image: #이미지명
+    key_name: dowon-key 
+    my_ip: # 액세스하는 PC의 IP 
+    group_name: "development"
+    instance_type: "t2.micro"
+    device_name: "/dev/xvda"
+    device_type: "gp2"
+    volume_size: 20 # EBS 디스트크기（GB）

@@ -1,0 +1,17 @@
+---
+- name: Security Group 작성
+  ec2_group:
+    name: "{{ group_name }}"
+    description: "{{ group_name }} server security group"
+    region: ap-northeast-1
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: "{{ my_ip }}"
+    rules_egress:
+      - proto: all
+        from_port: 0
+        to_port: 65535
+        cidr_ip: 0.0.0.0/0
+
